@@ -87,77 +87,80 @@ public class BoardingPass extends AppCompatActivity {
     }
 
     //AsyncTask to get the JSON data from the url
-    private class GetJSON extends AsyncTask<String, Void, Void> {
+    private class GetJSON extends AsyncTask<String, Void, String> {
         @Override
-        protected Void doInBackground(String... urlReq) {
+        protected String doInBackground(String... urlReq) {
             HttpHandler sh = new HttpHandler();
             jsonStr = sh.makeServiceCall(urlReq[0]);
-            return null;
+            return jsonStr;
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            try{
-                JSONObject jsonObject = new JSONObject(jsonStr);
-                String trial = jsonObject.getString("boardingpass");
-                Log.i("Checking",trial);
-                JSONObject jsonBoardingPass = jsonObject.getJSONObject("boardingpass");
+        protected void onPostExecute(String jsonStr) {
+            if(jsonStr!=null){ //Checking if the jsonStr is empty
+                try{
+                    JSONObject jsonObject = new JSONObject(jsonStr);
+                    String trial = jsonObject.getString("boardingpass");
+                    Log.i("Checking",trial);
+                    JSONObject jsonBoardingPass = jsonObject.getJSONObject("boardingpass");
 
-                passengerName = jsonBoardingPass.getString("passengerName");
-                tvPassengerName.setText(passengerName);
-                Log.i("Checking",passengerName);
+                    passengerName = jsonBoardingPass.getString("passengerName");
+                    tvPassengerName.setText(passengerName);
+                    Log.i("Checking",passengerName);
 
-                from = jsonBoardingPass.getString("from");
-                tvFrom.setText(from);
-                Log.i("Checking",from);
+                    from = jsonBoardingPass.getString("from");
+                    tvFrom.setText(from);
+                    Log.i("Checking",from);
 
-                to = jsonBoardingPass.getString("to");
-                tvTo.setText(to);
+                    to = jsonBoardingPass.getString("to");
+                    tvTo.setText(to);
 
-                flightId = jsonBoardingPass.getString("flightId");
-                tvFlightId.setText(flightId);
+                    flightId = jsonBoardingPass.getString("flightId");
+                    tvFlightId.setText(flightId);
 
-                boardingTime = jsonBoardingPass.getString("boardingTime");
-                tvBoardingTime.setText(boardingTime);
+                    boardingTime = jsonBoardingPass.getString("boardingTime");
+                    tvBoardingTime.setText(boardingTime);
 
-                boardingIn = jsonBoardingPass.getString("boardingIn");
-                tvBoardingIn.setText(boardingIn);
+                    boardingIn = jsonBoardingPass.getString("boardingIn");
+                    tvBoardingIn.setText(boardingIn);
 
-                departue = jsonBoardingPass.getString("departure");
-                tvDeparture.setText(departue);
+                    departue = jsonBoardingPass.getString("departure");
+                    tvDeparture.setText(departue);
 
-                arrival = jsonBoardingPass.getString("arrival");
-                tvArrival.setText(arrival);
+                    arrival = jsonBoardingPass.getString("arrival");
+                    tvArrival.setText(arrival);
 
-                terminal = jsonBoardingPass.getString("terminal");
-                tvTerminal.setText(terminal);
+                    terminal = jsonBoardingPass.getString("terminal");
+                    tvTerminal.setText(terminal);
 
-                gate = jsonBoardingPass.getString("gate");
-                tvGate.setText(gate);
+                    gate = jsonBoardingPass.getString("gate");
+                    tvGate.setText(gate);
 
-                seat = jsonBoardingPass.getString("seat");
-                tvSeat.setText(seat);
+                    seat = jsonBoardingPass.getString("seat");
+                    tvSeat.setText(seat);
 
-                qrCode = jsonBoardingPass.getString("qrcode");
+                    qrCode = jsonBoardingPass.getString("qrcode");
 
-                try {
-                    URL urlConnection = new URL(qrCode);
-                    HttpURLConnection connection = (HttpURLConnection) urlConnection
-                            .openConnection();
-                    connection.setDoInput(true);
-                    connection.connect();
-                    InputStream input = connection.getInputStream();
-                    Bitmap bmImage = BitmapFactory.decodeStream(input);
-                    ivQrCode.setImageBitmap(bmImage);
+                    try {
+                        URL urlConnection = new URL(qrCode);
+                        HttpURLConnection connection = (HttpURLConnection) urlConnection
+                                .openConnection();
+                        connection.setDoInput(true);
+                        connection.connect();
+                        InputStream input = connection.getInputStream();
+                        Bitmap bmImage = BitmapFactory.decodeStream(input);
+                        ivQrCode.setImageBitmap(bmImage);
 
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }catch (final JSONException e){
+                    Toast.makeText(BoardingPass.this,"Error:  "+e,Toast.LENGTH_LONG).show();
                 }
+            }else
+                Toast.makeText(BoardingPass.this,"Please connect to internet",Toast.LENGTH_SHORT).show();
 
-            }catch (final JSONException e){
-                Toast.makeText(BoardingPass.this,"Error:  "+e,Toast.LENGTH_LONG).show();
-            }
             progressDialog.dismiss();
 
         }

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         String confirmPassword = etConfirmPassword.getText().toString();
 
         //Checking if any field is left empty
-        if(name.equals(null)||dob.equals(null)||contactNumber.equals(null)||mailId.equals(null)||password.equals(null)||confirmPassword.equals(null)){
+        if(name.equals("")||dob.equals("")||contactNumber.equals("")||mailId.equals("")||password.equals("")||confirmPassword.equals("")){
             Toast.makeText(this,"Please fill all the field and then click on the register",Toast.LENGTH_SHORT).show();
         }
         else {

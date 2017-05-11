@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "159510224822",
+    "firebase_url": "https://flightboardingpass-be2a7.firebaseio.com",
+    "project_id": "flightboardingpass-be2a7",
+    "storage_bucket": "flightboardingpass-be2a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159510224822:android:ba9cc3964edda6ee",
+        "android_client_info": {
+          "package_name": "com.felight.flightboardingpass"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "159510224822-vfpk3i0drdp44b2ln48ela8bkhlvsgk1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk12irh_pHm4j-nM19dM05cNavsppHtg8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

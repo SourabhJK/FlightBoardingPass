@@ -1,0 +1,21 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=AE:54:71:DC:9D:70:89:71:71:EC:8F:F7:16:38:10:A5:0C:3D:0D:6E%3Bcom.felight.flightboardingpass
+
+    You can also add your credentials to an existing key, using this line:
+    AE:54:71:DC:9D:70:89:71:71:EC:8F:F7:16:38:10:A5:0C:3D:0D:6E;com.felight.flightboardingpass
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyDtFQ_qneqtcAeXZ25HPntYccFEv14nVQ8
+    </string>
+</resources>

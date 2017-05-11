@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Reset Password"
+        android:id="@+id/resetPassword"/>
+
+    <item android:title="User Information"
+        android:id="@+id/userInformation"/>
+
+    <item android:title="User Location"
+        android:id="@+id/userLocation"/>
+
+</menu>

@@ -51,7 +51,7 @@
            android:layout_marginLeft="16dp" />
 
        <EditText
-            android:layout_width="0dp"
+            android:layout_width="368dp"
             android:layout_height="wrap_content"
             android:gravity="left"
            android:textSize="15dp"
@@ -79,7 +79,7 @@
            android:layout_marginLeft="16dp" />
 
        <EditText
-            android:layout_width="0dp"
+            android:layout_width="368dp"
             android:layout_height="wrap_content"
             android:gravity="left"
            android:textSize="15dp"
@@ -108,7 +108,7 @@
            android:layout_marginTop="8dp" />
 
        <EditText
-            android:layout_width="0dp"
+            android:layout_width="368dp"
             android:layout_height="wrap_content"
             android:gravity="left"
            android:textSize="15dp"
@@ -137,7 +137,7 @@
            android:layout_marginLeft="16dp" />
 
        <EditText
-            android:layout_width="0dp"
+            android:layout_width="368dp"
             android:layout_height="wrap_content"
            android:inputType="textPassword"
             android:gravity="left"
@@ -166,7 +166,7 @@
            android:id="@+id/tvConfirmPassword" />
 
        <EditText
-            android:layout_width="0dp"
+            android:layout_width="368dp"
             android:layout_height="wrap_content"
            android:inputType="textPassword"
             android:gravity="left"

@@ -24,7 +24,7 @@ public class UserInformation extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("Registration Data", Context.MODE_PRIVATE);
         String name = sharedPreferences.getString("Name",DEFAULT);
-        String dob = savedInstanceState.getString("DOB",DEFAULT);
+        String dob = sharedPreferences.getString("DOB",DEFAULT);
         String mailId = sharedPreferences.getString("MailId",DEFAULT);
         String contactNumber = sharedPreferences.getString("ContactNumber",DEFAULT);
 

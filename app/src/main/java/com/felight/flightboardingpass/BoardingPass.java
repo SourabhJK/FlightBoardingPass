@@ -141,19 +141,8 @@ public class BoardingPass extends AppCompatActivity {
 
                     qrCode = jsonBoardingPass.getString("qrcode");
 
-                    try {
-                        URL urlConnection = new URL(qrCode);
-                        HttpURLConnection connection = (HttpURLConnection) urlConnection
-                                .openConnection();
-                        connection.setDoInput(true);
-                        connection.connect();
-                        InputStream input = connection.getInputStream();
-                        Bitmap bmImage = BitmapFactory.decodeStream(input);
-                        ivQrCode.setImageBitmap(bmImage);
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    ImageLoadTask imageLoadTask = new ImageLoadTask(qrCode);
+                    imageLoadTask.execute();
 
                 }catch (final JSONException e){
                     Toast.makeText(BoardingPass.this,"Error:  "+e,Toast.LENGTH_LONG).show();
@@ -161,9 +150,44 @@ public class BoardingPass extends AppCompatActivity {
             }else
                 Toast.makeText(BoardingPass.this,"Please connect to internet",Toast.LENGTH_SHORT).show();
 
-            progressDialog.dismiss();
 
         }
+    }
+
+    //AsyncTask to load the image form the url
+    public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
+
+        private String url;
+
+        public ImageLoadTask(String url) {
+            this.url = url;
+        }
+
+        @Override
+        protected Bitmap doInBackground(Void... params) {
+            try {
+                URL urlConnection = new URL(url);
+                HttpURLConnection connection = (HttpURLConnection) urlConnection
+                        .openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream input = connection.getInputStream();
+                Bitmap myBitmap = BitmapFactory.decodeStream(input);
+                return myBitmap;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            super.onPostExecute(result);
+            ivQrCode.setImageBitmap(result);
+            progressDialog.dismiss();
+        }
+
     }
 
     @Override

@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
     //Method to save the user information using Shared Preferences
     public void register(View view){
+        String name = etName.getText().toString();
         SharedPreferences sharedPreferences = getSharedPreferences("Registration Data", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        String name = etName.getText().toString();
         String contactNumber = etContactNumber.getText().toString();
         String dob = etDOB.getText().toString();
         String mailId = etMailId.getText().toString();
